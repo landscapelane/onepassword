@@ -1,0 +1,4 @@
+
+printMessage(){
+	echo "$1"
+}

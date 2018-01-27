@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source ./Account.sh
+source ./Password.sh
+source ./Input.sh
+source ./Output.sh
 
 CMDS_IDX=0;
 
@@ -13,49 +17,37 @@ displayCMD(){
 	count=0
 	while [ "x${CMDS[count]}" != "x" ]
 	do
-	   echo "${CMDS[$count]}"
+	   printMessage "${CMDS[$count]}"
 	   count=$(( $count + 1 ))
 	done
 }
 
-createNewAccount(){
-	echo "Create new account"
-	read -p "Account:" NEW_ACCOUNT_NAME
-	read -p "Super password:" NEW_ACCOUNT_SUPER_PASSWORD
-	read -p "Confirm Super password:" NEW_ACCOUNT_SUPER_PASSWORD_CONFIRM
 
-	echo "Your are creating a new account:${NEW_ACCOUNT_NAME}"
-	read -p "Press y to start account:" CONFIRMED
-	if [ $CONFIRMED = 'Y' -o $CONFIRMED = 'y'  ]; then
-		echo "Creating you new account..."
-	fi
-
-}
 loginAnAccount(){
-	echo "Login an account"
+	printMessage "Login an account"
 }
 
 readyToExit(){
-	echo "Ready to exit"
+	printMessage "Ready to exit"
 	exit
 }
 
 readCMD(){
-	read -p "Enter your choose:" REQUEST_CMD
-	echo $REQUEST_CMD
+	readInput "Enter your choose:" REQUEST_CMD
+	printMessage $REQUEST_CMD
 }
 processCMD(){
 	case $REQUEST_CMD in
 	1)
-		echo "Your choose:${CMDS[0]}"
+		printMessage "Your choose:${CMDS[0]}"
 		createNewAccount
 	;;
 	2)
-		echo "Your choose:${CMDS[1]}"
+		printMessage "Your choose:${CMDS[1]}"
 		loginAnAccount
 	;;
 	3)
-		echo "Your choose:${CMDS[2]}"
+		printMessage "Your choose:${CMDS[2]}"
 	;;
 	*)
 		readyToExit
