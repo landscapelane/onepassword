@@ -1,4 +1,6 @@
 
+NEW_ACCOUNT_SUPER_PASSWORD="";
+NEW_ACCOUNT_SUPER_PASSWORD_CONFIRM="";
 
 createNewAccount(){
         printMessage "Create new account"
@@ -14,9 +16,11 @@ createNewAccount(){
 	fi
 	
         printMessage "Your are creating a new account:${NEW_ACCOUNT_NAME}"
-        readOneChar "Press y to start account:" CONFIRMED
+        readOneChar "Press y to confirm:" CONFIRMED
         if [ $CONFIRMED = 'Y' -o $CONFIRMED = 'y'  ]; then
                 printMessage "Creating your new account..."
+		creatPasswordFile
+		decryptPasswordFile
         fi
 
 
