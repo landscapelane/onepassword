@@ -1,0 +1,3 @@
+RET_YES=1
+RET_NO=0
+

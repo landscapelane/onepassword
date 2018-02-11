@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./Constants.sh
 source ./Account.sh
 source ./Password.sh
 source ./Input.sh
@@ -20,11 +21,6 @@ displayCMD(){
 	   printMessage "${CMDS[$count]}"
 	   count=$(( $count + 1 ))
 	done
-}
-
-
-loginAnAccount(){
-	printMessage "Login an account"
 }
 
 readyToExit(){

@@ -34,3 +34,20 @@ decryptPasswordFile()
 	echo "Decrypt file context:"
 	cat ${USERS_DIR}/${NEW_ACCOUNT_NAME}.out
 }
+
+veirfyPassword()
+{
+	local RET;
+	local ACCOUNT_NAME=$1
+	local PASSWORD=$2
+	
+	`cat ${USERS_DIR}/${ACCOUNT_NAME}.enc | $OPENSSL_DEC -k ${PASSWORD} > /dev/null 2>&1`
+	if [ $? -eq 0 ]
+	then
+		RET=${RET_YES}
+	else
+		RET=${RET_NO}
+	fi
+	return ${RET}
+}
+
